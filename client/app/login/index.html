@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="login">
+  <head>
+  	<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    	<title>blog</title>
+
+        <!-- CSS -->
+        {{ range .Stylesheets }}
+        <link rel="stylesheet" type="text/css" href="{{.}}">  
+        {{ end }}
+
+    	<link rel="icon" href="../app/blog/images/favicon.ico">
+  </head>
+  <body>
+  	<div class="layout-main">	
+    		<div class="layout-main-shortcut">
+    	  		<div class="container">
+    	  			<div class="row">	
+    	  				<div class="col-md-12">
+                           {{ range .Shortcuts }}
+                           <a href="{{ .Url }}">{{ .Name }}</a>
+                           {{ end }}
+    	  				</div> 
+    	  			</div> 
+    	  		</div> 		  	  		
+    		</div>
+
+        <!-- header -->
+        <div class="layout-main-header">
+      		<div class="container">
+      			<div class="row">	
+      				<div class="col-md-12">
+                <div class="menu-bar">
+                    <ul class="main-menu">
+                        {{ range .Menus }}
+                        <li class="main-menu-item">
+                            <a href="{{ .MainMenu.Url }}">{{ .MainMenu.Name }}</a>
+                            {{ if .HasSubMenu }}
+                            <ul class="sub-menu">
+                                {{ range .SubMenu }}
+                                <li class="sub-menu-item">
+                                  <a href="{{ .Url }}">{{ .Name }}</a>
+                                </li>
+                                {{ end }}
+                            </ul> 
+                            {{ end }}                                   
+                        </li>
+                        {{ end }}
+                    </ul>
+                </div>
+      				</div> 
+      			</div> 
+      		</div> 		  	  		
+        </div>    
+
+  	  	<div class="layout-main-content">
+          <div class="container">
+            <div class="row"> 
+              <div class="col-md-12">    
+
+                <div butterbar>Loading...</div>
+                <div ng-view></div>
+                 
+              </div> 
+            </div> 
+          </div>      	  		
+  	  	</div>
+
+        <!-- footer -->
+        <div class="layout-main-footer">
+          <div class="container">
+            <div class="row"> 
+              <div class="col-md-12 copyright">
+                <hr>
+                <a href="#/">关于</a>
+                &nbsp;|&nbsp;<a href="#/">联系方式</a>
+                &nbsp;|&nbsp;<a href="#/">版权</a>
+                &nbsp;|&nbsp;<a href="#/">隐私权保护</a>
+                &nbsp;|&nbsp;<a href="#/">法律声明</a>
+                <div class="counter">访问人数：88766</div>
+                Copyright © 2014 by <a href="#/">Yingx Pan</a>.All Rights Reserved.
+              </div>
+            </div>
+          </div>
+        </div>
+
+  	</div>
+
+    <!-- JAVASCRIPT -->
+    {{ range .Javscripts }}
+    <script src="{{.}}"></script>
+    {{ end }}
+    <!--startup-->
+    {{.Startup}}
+
+  </body>
+</html>

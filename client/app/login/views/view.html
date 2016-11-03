@@ -1,0 +1,52 @@
+<!-- content -->
+<div>
+    <div class="login_main">
+        <div class="leftbox"></div>
+        <div class="loginbox">
+            <div class="logininfo">
+                <div class="info_header">
+                    <div class="tab">
+                        <div class="form-group">
+                        <span style="font-size: 20px;"><a href="javascript:void(0)">普通登录</a><span style="display: none;">普通登录</span></span> 
+                        <!-- 
+                        <em class="W_vline S_txt2">|</em> 
+                        <span><a href="javascript:void(0)" style="">二维码登录</a><span style="display: none;">二维码登录</span></span> 
+                        <em class="W_vline S_txt2">|</em> 
+                        <span><a href="javascript:void(0);" style="display: none;">短信登录</a><span>短信登录</span></span> 
+                        -->
+                        </div>
+                    </div>
+                </div>
+                <form novalidate name="loginForm" class="form-horizontal" ng-submit="checkUser()">
+                    <div class="form-group">
+                        <div class="form-inline">
+                            <label class="sr-only" for="Account">Account</label>
+                            <input type="text" class="form-control" name="account" placeholder="Account" focus ng-model="login.name" ng-minlength=2 required>
+                            <span class="glyphicon glyphicon-remove-circle" aria-hidden="true" style="padding-left: 10px;" ng-show="loginForm.account.$error.required"></span>
+                            <span class="glyphicon glyphicon-ok-circle" aria-hidden="true" style="padding-left: 10px;" ng-hide="loginForm.account.$error.required"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-inline">
+                            <label class="sr-only" for="Password">Password</label>
+                            <input type="password" class="form-control" name="password" placeholder="Password"  ng-model="login.password" ng-minlength=2 required>
+                            <span class="glyphicon glyphicon-remove-circle" aria-hidden="true" style="padding-left: 10px;" ng-show="loginForm.password.$error.required"></span>
+                            <span class="glyphicon glyphicon-ok-circle" aria-hidden="true" style="padding-left: 10px;" ng-hide="loginForm.password.$error.required"></span>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" style="width:16px;height:16px;" ng-model="login.stored"><div style="font-size:20px;">下次自动登录</div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-warning" style="width:200px;" ng-disabled="loginForm.$invalid">登录</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

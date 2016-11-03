@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="section">
+<head>
+  <title>section</title>
+
+  <script src="../extensions/angular-1.5.0/angular.js"></script>
+  <script src="../extensions/angular-1.5.0/angular-route.js"></script>
+  <script src="../extensions/angular-1.5.0/angular-resource.js"></script>
+
+  <script src="../app/section/scripts/directives/directives.js"></script>
+  <script src="../app/section/scripts/services/services.js"></script>
+  <script src="../app/section/scripts/app.js"></script>
+  <script src="../app/section/scripts/controllers/controllers.js"></script>
+
+  <link rel="stylesheet" href="../extensions/bootstrap-3.3.5/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../app/section/styles/app.css">
+
+  <link rel="icon" href="../app/section/images/favicon.ico">
+
+</head>
+<body>
+  <header>
+    <h1>section</h1>
+  </header>
+
+  <div butterbar>Loading...</div>
+
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="col-sm-2">
+        <!--Sidebar-->
+        <div id="focus"><a href="/section/#/new">New Section</a></div>
+        <div><a href="/section/#/">Section List</a></div>
+      </div>
+      <div class="col-sm-10">
+        <div ng-view></div>        
+      </div>      
+    </div>
+  </div>
+</body>
+</html>

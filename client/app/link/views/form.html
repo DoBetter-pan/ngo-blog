@@ -1,0 +1,30 @@
+<h2>Edit Link</h2>
+<form name="recipeForm" class="form-horizontal" ng-submit="save()">
+
+	<div class="control-group">
+		<label class="control-label" for="name">Name:</label>
+		<div class="controls">
+			<input class="input-xlarge" id="name" focus ng-model="link.name">
+		</div>		
+	</div>
+
+	<div class="control-group">
+		<label class="control-label" for="age">Age:</label>
+		<div class="controls">
+			<input class="input-xlarge" id="age" focus ng-model="link.age" integer>
+		</div>		
+	</div>	
+
+	<div class="control-group">
+		<label class="control-label" for="sex">Sex:</label>
+		<div class="controls">
+			<input class="input-xlarge" id="sex" focus ng-model="link.sex" integer>
+		</div>		
+	</div>	
+
+	<div class="form-actions">
+		<button class="btn btn-primary">Save</button>
+		<button type="button" class="btn" ng-show="recipe.id!=-1" ng-click="remove()">Delete</button>
+	</div>
+	
+</form>

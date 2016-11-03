@@ -1,0 +1,83 @@
+<div class="site-content">
+    <form novalidate name="blogForm" class="form-horizontal" ng-submit="save()">
+        <div class="col-sm-9">
+            <div class="form-group">
+                <label class="control-label" for="title">标题:</label>
+                <input type="text" class="form-control input-lg" id="title" name="blogTitle" focus ng-model="blog.titleHtml" ng-minlength=2 required>
+                <!--
+                <div ng-show="blogForm.$submitted || blogForm.uName.$touched">
+                    <div ng-show="blogForm.blogTitle.$error.required">标题为必填项</div>
+                </div>
+                -->
+            </div>
+
+            <div class="form-group">
+                <label class="control-label" for="description">内容:</label>
+                <!--
+                <textarea class="form-control" id="content" ng-model="blog.contentHtml"></textarea>
+                <textarea class="form-control" id="contentxxx" ng-model="blog.contentHtml"></textarea>
+                -->
+                <div simditor ng-model="blog.contentHtml" placeholder="Blablabla" ng-minlength=2 required></div>
+                <!--
+                <textarea id="contentxxx" simditor ng-model="blog.contentHtml"></textarea>
+                -->
+            </div>	
+        </div>	
+
+        <div class="col-sm-3">
+            <div class="content-aside">
+                <div class="form-group">
+                    <!--
+                    <button type="submit" class="btn btn-primary" ng-click="save()">发布</button>
+                    -->
+                    <button type="submit" class="btn btn-primary" ng-disabled="blogForm.$invalid">发布</button>
+                </div>	
+
+                <div class="form-group">
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">文章设置</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="panel-aside">
+                                <div class="form-group">
+                                    <label class="control-label" for="title">状态:</label>
+                                    <div class="form-inline">
+                                        <select name="blogStatus" class="form-control" ng-model="blog.status" style="width: 80%;" integer required>
+                                            <option value="0">草稿</option>
+                                            <option value="1">隐藏</option>
+                                            <option value="2">公开</option>
+                                        </select>
+                                        <span class="glyphicon glyphicon-remove-circle" aria-hidden="true" style="padding-left: 10px;" ng-show="blogForm.blogStatus.$error.required"></span>
+                                        <span class="glyphicon glyphicon-ok-circle" aria-hidden="true" style="padding-left: 10px;" ng-hide="blogForm.blogStatus.$error.required"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="title">分区:</label>
+                                    <div class="form-inline">
+                                        <select name="blogSection" class="form-control" ng-model="blog.section" ng-change="changeSeciton(blog.section)" style="width: 80%;" integer required>
+                                            <option ng-repeat="sec in sections" value="[[sec.id]]">[[sec.name]]</option>
+                                        </select>
+                                        <span class="glyphicon glyphicon-remove-circle" aria-hidden="true" ng-show="blogForm.blogSection.$error.required"></span>
+                                        <span class="glyphicon glyphicon-ok-circle" aria-hidden="true" ng-hide="blogForm.blogSection.$error.required"></span>                                    
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="title">分类:</label>
+                                    <div class="form-inline">
+                                        <select name="blogCategory" class="form-control" ng-model="blog.category" style="width: 80%;" integer required>
+                                            <option ng-repeat="cat in categoriesBySec" value="[[cat.id]]">[[cat.name]]</option>
+                                        </select>
+                                        <span class="glyphicon glyphicon-remove-circle" aria-hidden="true" ng-show="blogForm.blogCategory.$error.required"></span>
+                                        <span class="glyphicon glyphicon-ok-circle" aria-hidden="true" ng-hide="blogForm.blogCategory.$error.required"></span>                                    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>	
+            </div>	
+        </div>	
+
+    </form>
+</div>

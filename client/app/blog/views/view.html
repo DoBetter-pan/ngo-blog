@@ -1,0 +1,28 @@
+<div class="site-content">
+    <div class="article">
+        <div class="article-header">
+            <div class="article-title">
+                <a href="[[article.article.url]]">[[article.article.titleHtml]]</a>
+            </div>
+            <div class="comment-link">
+                <a href="#/" title=""><span class="commet-reply">发表回复</span></a>
+            </div>
+        </div>
+        <div class="article-content">
+            [[article.article.contentHtml]]
+        </div>
+        <div class="article-footer">
+            <span>本文章发布于</span><span class="text-warning">[[article.article.posted]]</span>。
+            <span>属于</span><a href="[[article.article.sectionUrl]]">[[article.article.sectionName]]</a>，<a href="[[article.article.categoryUrl]]">[[article.article.categoryName]]</a>分类。
+            <span>作者是</span><span class="text-warning">[[article.article.author]]</span>
+        </div>
+    </div>
+    <div class="article-navigation">
+        <div class="nav-previous" ng-show="article.previousId!=-1">
+            <a href="[[article.previousUrl]]"><span class="nav-meta">←[[article.previousTitle]]</span></a>
+        </div>
+        <div class="nav-next" ng-show="article.nextId!=-1">
+            <a href="[[article.nextUrl]]"><span class="nav-meta">[[article.nextTitle]]→</span></a>
+        </div>
+    </div>
+</div>

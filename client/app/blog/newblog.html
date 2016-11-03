@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="newblog">
+  <head>
+  	<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    	<title>create a new blog</title>
+
+        <!-- CSS -->
+        {{ range .Stylesheets }}
+        <link rel="stylesheet" type="text/css" href="{{.}}">  
+        {{ end }}
+
+    	<link rel="icon" href="../app/blog/images/favicon.ico">
+  </head>
+  <body>
+  	<div class="layout-main">	
+
+        <!-- header -->
+        <div class="layout-main-header">
+      		<div class="container">
+      			<div class="row">	
+                    <div class="col-md-12">
+
+                        <nav class="navbar navbar-default">
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#newblog-navbar-collapse" aria-expanded="false">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand" href="#">NG-BLOG</a>
+                            </div>
+
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse" id="newblog-navbar-collapse">
+                                <ul class="nav navbar-nav">
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">内容<span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#/newblog">撰写</a></li>
+                                            <li><a href="#">文章</a></li>
+                                            <li><a href="#">图片</a></li>
+                                            <li><a href="#">文件</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">单元</a></li>
+                                            <li><a href="#">分类</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">评论</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">管理<span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">用户</a></li>
+                                            <li><a href="#">语言</a></li>
+                                            <li><a href="#">设置</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">诊断</a></li>
+                                            <li><a href="#">统计</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">主题</a></li>
+                                            <li><a href="#">插件</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">首页 <span class="sr-only">(current)</span></a></li>
+                                </ul>
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li><a href="#">注销</a></li>
+                                </ul>
+                            </div><!-- /.navbar-collapse -->
+                        </nav>
+
+      				</div> 
+      			</div> 
+      		</div> 		  	  		
+        </div>    
+
+  	  	<div class="layout-main-content">
+          <div class="container">
+            <div class="row"> 
+              <div class="col-md-12">    
+
+                <div butterbar>Loading...</div>
+                <div ng-view></div>
+                 
+              </div> 
+            </div> 
+          </div>      	  		
+  	  	</div>
+
+        <!-- footer -->
+        <div class="layout-main-footer">
+          <div class="container">
+            <div class="row"> 
+              <div class="col-md-12 copyright">
+                <hr>
+                <a href="/index.php?r=site/about">关于</a>
+                &nbsp;|&nbsp;<a href="#">联系方式</a>
+                &nbsp;|&nbsp;<a href="#">版权</a>
+                &nbsp;|&nbsp;<a href="#">隐私权保护</a>
+                &nbsp;|&nbsp;<a href="#">法律声明</a>
+                <div class="counter">访问人数：88766</div>
+                Copyright © 2014 by <a href="#">Yingx Pan</a>.All Rights Reserved.
+              </div>
+            </div>
+          </div>
+        </div>
+
+  	</div>
+
+    <!-- JAVASCRIPT -->
+    {{ range .Javscripts }}
+    <script src="{{.}}"></script>
+    {{ end }}
+    <!--startup-->
+    {{.Startup}}
+
+  </body>
+</html>

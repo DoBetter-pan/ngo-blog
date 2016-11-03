@@ -1,0 +1,30 @@
+<div class="site-content">
+    <div ng-repeat="artInfo in articles">
+        <div class="article" ng-repeat="art in artInfo.articles">
+            <div class="article-header">
+                <div class="article-title">
+                    <a href="[[art.url]]">[[art.titleHtml]]</a>
+                </div>
+                <div class="comment-link">
+                    <a href="#/" title=""><span class="commet-reply">发表回复</span></a>
+                </div>
+            </div>
+            <div class="article-content">
+                [[art.contentHtml]]
+            </div>
+            <div class="article-footer">
+                <span>本文章发布于</span><span class="text-warning">[[art.posted]]</span>。
+                <span>属于</span><a href="[[art.sectionUrl]]">[[art.sectionName]]</a>，<a href="[[art.categoryUrl]]">[[art.categoryName]]</a>分类。
+                <span>作者是</span><span class="text-warning">[[art.author]]</span>
+            </div>
+        </div>
+        <div class="article-navigation">
+            <div class="nav-previous" ng-show="artInfo.HasPrevious">
+                <a href="[[artInfo.PreviousUrl]]"><span class="nav-meta">←早期文章</span></a>
+            </div>
+            <div class="nav-next" ng-show="artInfo.HasNext">
+                <a href="[[artInfo.NextUrl]]"><span class="nav-meta">较新文章→</span></a>
+            </div>
+        </div>        
+    </div>
+</div>

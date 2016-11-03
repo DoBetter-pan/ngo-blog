@@ -1,0 +1,14 @@
+<div class="site-content">
+	<div class="article-list">
+    	<ul ng-repeat="cat in articles">
+      		<li>
+        		<h3>[[cat.description]]<a href="[[cat.url]]">[[cat.name]]</a></h3>
+      		</li>
+		    <ul class="recent-post" ng-repeat="art in cat.articles">
+		        <li>
+		        	<a href="[[art.url]]" title="[[art.titleHtml]]">[[art.titleHtml]]</a>
+		        </li>
+		    </ul>
+    	</ul>
+	</div>
+</div>

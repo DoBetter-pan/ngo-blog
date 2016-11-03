@@ -1,0 +1,46 @@
+<div style="padding-top:15px;">
+	<div style="text-align:center;" ng-show="!isRouteLoading" ng-cloak>
+		<div style="font-size:52px;" class="fa fa-cog fa-spin"></div>
+	</div>
+	<div class="container-fluid" >
+		<div class="row">
+			<div class="col-md-2" style="padding:0px;margin-top:0px;" ng-show="navLock">
+				<ul class="docs-menu">
+					<div style="color:#357BB7;">
+						<p>
+							<i>菜单功能</i>
+							<span class="pull-right material-icons" style="font-size:22px;cursor:pointer;color:#333;" tooltip-placement="left" uib-tooltip="隐藏菜单" ng-click="toggleNavLock()">lock</span>
+						</p>
+					</div>
+					<li style="cursor:pointer;" ng-repeat="menu in menu.menus">
+						<a href="#">xxxxxxxxxxxxxxxxxxx</a>
+						<menu-link menu="menu" ng-if="menu.type === 'link'"></menu-link>
+						<menu-link menu="menu"></menu-link>
+
+					      		 <menu-link menu="menu" ng-if="menu.type === 'link'"></menu-link>
+					             <menu-toggle menu="menu" ng-if="menu.type === 'toggle'"></menu-toggle>
+
+						<menu-toggle menu="menu" nf-if="menu.type === 'toggle'"></menu-toggle>
+					</li>
+
+					<li style="cursor:pointer;" ng-repeat="x in xxx.xxxx">
+						<a href="#">x</a>
+					</li>
+
+				</ul>
+			</div>
+
+			<!--
+			<div ng-class="{'col-md-10':leftNavLock}" class="leftLockNav-show-hide col-sm-12 col-xs-12" ng-style="pageContentStyle">
+				<h3 style="etter-spacing: -1px;font-weight:normal;margin-top:10px;">[[getNavName()]]</h3>
+				<div ng-view></div>
+			</div>
+			-->
+
+		</div>
+		<!--
+		<toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'position-class': 'toast-bottom-right'}"></toaster-container>
+		-->
+	</div>
+</div>  
+

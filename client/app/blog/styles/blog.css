@@ -1,0 +1,381 @@
+/** 
+* @file app.css
+* @brief 
+* @author yingx
+* @date 2016-08-22
+*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+body {
+  min-width: 960px;
+  color: #222;
+  font-family: Arial, sans-serif;
+  font: 13px/1.5 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, sans-serif;
+  line-height: 1;  
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none;
+}
+
+:focus {
+  outline: 0;
+}
+
+ins {
+  text-decoration: none;
+}
+
+del {
+  text-decoration: line-through;;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a:focus {
+  outline: 1px dotted;
+}
+
+hr {
+  border: 0 #ccc solid;
+  border-top-width: 1px;
+  clear: both;
+  height: 0;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 23px;
+}
+
+h3 {
+  font-size: 21px;
+}
+
+h4 {
+  font-size: 19px;
+}
+
+h5 {
+  font-size: 17px;
+}
+
+h6 {
+  font-size: 15px;
+}
+
+ol {
+  list-style: decimal;
+}
+
+ul {
+  list-style: disc;
+}
+
+li {
+  margin-left: 30px;
+}
+
+p, dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, table, address, fieldset {
+  margin-bottom: 20px;
+}
+
+a:link, a:visited, a:hover {
+  text-decoration: none;
+}
+
+a:link, a:visited {
+  color: #09c;
+}
+
+a:hover {
+  color: #9c0;
+}
+
+.alpha {
+  margin-left: 0;
+}
+
+.omega {
+  margin-right: 0;
+}
+
+.inner {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.layout-main {
+  background: white;
+}
+
+.layout-main-bg {
+  background: url(img/mainbg.png) no-repeat center 0;
+}
+
+.layout-main-shortcut {
+  background: #eee;
+  border-bottom: 1px solid #ddd;
+  margin: 0 auto;
+  padding: 3px;
+  text-align: right;
+  line-height: 18px;
+}
+
+.layout-main-shortcut a {
+  padding: 3px;
+  text-transform: lowercase;
+  color: #666;
+}
+
+.layout-main-shortcut a:focus {
+  outline: none;
+}
+
+.layout-main-shortcut a:link, .layout-main-shortcut a:visited, .layout-main-shortcut a:hover {
+  text-decoration: none;
+} 
+
+.layout-main-shortcut a:hover {
+  color: #9c0;
+}
+
+.layout-main-header {
+  height: 76px;
+}
+
+.main-menu, .main-menu-item>a:hover, .main-menu-item:hover>a, .main-menu li.active>a, .main-menu li.active>a:hover, .sub-menu-last>a {
+  background-image: url(img/menu-bar.png);
+  background-repeat: repeat-x;
+}
+
+.menu-bar {
+  position: relative;
+  height: 36px;
+  margin: 20px -20px 0 0;
+  z-index: 10001;  
+}
+
+.menu-bar a:focus {
+  outline: none;
+}
+
+.menu-bar a:link, .menu-bar a:visited, .menu-bar a:hover {
+  text-decoration: none;
+}
+
+.main-menu {
+  display: block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 36px;
+  background-position: 0 -36px;
+}
+
+.main-menu-item {
+  position: relative;;
+  display: inline;
+  margin: 0;
+  padding: 0;
+  float: left;
+  border-right: 1px solid #999;
+  text-transform: lowercase;
+  line-height: 19.5px;
+}
+
+.main-menu-item:hover>ul {
+  display: block;
+}
+
+.main-menu-item>a {
+  float: left;
+  height: 36px;
+  padding: 8px 10px 12px 11px;
+  color: white;
+  border-right: 1px solid #666;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 1px #333;
+}
+
+.main-menu li.active>a {
+  background-color: #666;
+  background-image: none;
+  color: #eee;
+}
+
+.main-menu-item>a:hover, .main-menu-item:hover>a {
+  border-bottom: 1px solid transparent;
+  background-position: 0 -144px;
+  color: #fff;
+}
+
+.sub-menu {
+  display: none;
+  width: 160px;
+  position: absolute;
+  top: 36px;
+  left: 0;
+}
+
+.sub-menu-item {
+  float: none;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border-right: 0 none;
+}
+
+.sub-menu-item>a {
+  color: #fff;
+  padding: 4px 15px;
+  border-bottom: 1px solid #666;
+  background-color: #444;
+  display: block;
+}
+
+.sub-menu-item>a:hover {
+  color: #9c0;
+}
+
+.sub-menu-last>a {
+  border-bottom: 0 none;
+  background-repeat: no-repeat;
+  background-position: 0 bottom;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  -moz-border-radius-bottomright: 5px;
+}
+
+.layout-main-footer {
+	color: #888;
+	margin: 5px 0 0 0;
+	padding: 5px 0;
+	font-size: .9em;
+}
+
+.layout-main-footer .copyright {
+	font-size: 14px;
+  line-height: 18px;
+	margin: 0 0 0 0;
+  padding: 5px 5px 5px 5px;  
+	text-align: center;
+}
+
+.layout-main-footer .counter {
+	color: #888;
+	font-size: 16px;
+	text-align: center;
+}
+
+.layout-main-footer hr {
+	border: 0 #ccc solid; 
+	border-top-width: 2px; 
+	clear: both; 
+	height: 0; 
+}
+
+.layout-main-content {
+    margin: 0;  
+    padding: 0;
+    border: 0;
+    outline: 0;
+    width: 100%;
+    background: transparent;
+    vertical-align: baseline;
+    font: inherit;
+    font-size: 100%;
+    float: left;
+    display: block;
+}
+
+.site-content {
+    margin-bottom: 10px;  
+    padding-top: 20px;
+    border-top: 2px solid #f29149;
+}
+
+.recent-post {
+    margin:10px;
+    padding-left: 30px;
+    line-height: 20px;
+    font-size: 16px;
+    list-style-type: circle;
+}
+
+.article-list {
+    margin: 10px;
+}
+
+.article {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 4px double #ededed;
+    word-wrap: break-word;
+}
+
+.article-header,.article-footer {
+    margin-top: 24px;
+    line-height: 18px;
+    font-size: 14px;
+    color: #757575;
+}
+
+.article-title {
+    line-height: 30px;
+    font-size: 24px;
+    font-weight: normal;
+}
+
+.comment-link {
+    margin-top: 24px;
+    line-height: 18px;
+    font-size: 14px;
+    color: #757575;
+}
+
+.article-content {
+    margin-top: 24px;
+    line-height: 20px;
+    font-size: 16px;
+}
+
+.article-navigation {
+    clear: both;
+    overflow: hidden;
+    line-height: 20px;
+    font-size: 16px;
+}
+
+.nav-previous {
+    float: left;
+}
+
+.nav-next {
+    float: right;
+}
