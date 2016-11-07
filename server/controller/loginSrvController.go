@@ -15,8 +15,8 @@ import (
     _ "strconv"
 	"io/ioutil"
     "encoding/json"
-	model "go-angular/server/model"
-	session "go-angular/server/session"
+	model "ngo-blog/server/model"
+	session "ngo-blog/server/session"
 )
 
 type Login struct {

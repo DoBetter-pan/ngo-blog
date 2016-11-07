@@ -12,7 +12,7 @@ import (
 	"net/http"
 	"log"
 	"html/template"
-	model "go-angular/server/model"
+	model "ngo-blog/server/model"
 )
 
 type BlogLink struct {

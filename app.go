@@ -15,8 +15,8 @@ import (
 	"log"
 	"fmt"
 	"flag"
-	controller "go-angular/server/controller"
-	session "go-angular/server/session"
+	controller "ngo-blog/server/controller"
+	session "ngo-blog/server/session"
 )
 
 type params struct {
@@ -180,22 +180,6 @@ func controllerResty(w http.ResponseWriter, r *http.Request, c Controller) {
     } else {
         http.Redirect(w, r, "/login", http.StatusFound)   
     }
-}
-
-func recipeHandler(w http.ResponseWriter, r *http.Request) {
-	recipe := controller.NewRecipeController()
-	controller := reflect.ValueOf(recipe)
-	controllerAction(w, r, func() reflect.Value {
-		return controller
-		})
-}
-
-func recipeSrvHandler(w http.ResponseWriter, r *http.Request) {
-	recipeSrv := controller.NewRecipeSrvController()
-	controller := reflect.ValueOf(recipeSrv)
-	controllerResty(w, r, func() reflect.Value {
-		return controller
-		})
 }
 
 func blogHandler(w http.ResponseWriter, r *http.Request) {

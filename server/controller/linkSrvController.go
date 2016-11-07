@@ -10,7 +10,7 @@ package controller
 import (
 	"net/http"
 	"io/ioutil"
-	model "go-angular/server/model"
+	model "ngo-blog/server/model"
 )
 
 type LinkSrvController struct {

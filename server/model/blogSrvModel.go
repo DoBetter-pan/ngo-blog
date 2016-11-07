@@ -14,7 +14,7 @@ import (
     "strconv"
     _ "database/sql"
     _ "github.com/go-sql-driver/mysql"
-	dbwrapper "go-angular/server/datawrapper"
+	dbwrapper "ngo-blog/server/datawrapper"
 )
 
 type Article struct {
@@ -27,12 +27,12 @@ type Article struct {
     Excerpt  string `json:"excerpt"`
     ExcerptHtml  string `json:"excerptHtml"`
     Url  string `json:"url"`
-    SectionId int64 `json:"sectionId"`    
+    SectionId int64 `json:"sectionId"`
     SectionName string `json:"sectionName"`
     SectionUrl string `json:"sectionUrl"`
-    CategoryId int64 `json:"categoryId"`       
+    CategoryId int64 `json:"categoryId"`
     CategoryName string `json:"categoryName"`
-    CategoryUrl string `json:"categoryUrl"`    
+    CategoryUrl string `json:"categoryUrl"`
     CommentCount int64 `json:"commentCount"`
     Status int64 `json:"status"`
     Posted  string `json:"posted"`

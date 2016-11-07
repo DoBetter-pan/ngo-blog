@@ -12,7 +12,7 @@ import (
     "strconv"
 	"net/http"
 	"io/ioutil"
-	model "go-angular/server/model"
+	model "ngo-blog/server/model"
 )
 
 type BlogSrvController struct {
@@ -32,7 +32,7 @@ func (controller *BlogSrvController) CheckRules() map[string] []string {
         "deny *" }
     rules["Delete"] = []string {
         "allow admin,writer",
-        "deny *" }                
+        "deny *" }
     return rules
 }
 

@@ -13,7 +13,7 @@ import (
     _ "strings"
     _ "strconv"
 	"io/ioutil"
-	model "go-angular/server/model"
+	model "ngo-blog/server/model"
 )
 
 type MenuSrvController struct {

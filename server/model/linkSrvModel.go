@@ -11,7 +11,7 @@ import (
     "encoding/json"
     _ "database/sql"
     _ "github.com/go-sql-driver/mysql"
-	dbwrapper "go-angular/server/datawrapper"
+	dbwrapper "ngo-blog/server/datawrapper"
 )
 
 type Link struct {

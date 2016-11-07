@@ -12,7 +12,7 @@ import (
     "time"
     _ "database/sql"
     _ "github.com/go-sql-driver/mysql"
-	dbwrapper "go-angular/server/datawrapper"
+	dbwrapper "ngo-blog/server/datawrapper"
 )
 
 var counterSqls map[string] string = map[string] string {
