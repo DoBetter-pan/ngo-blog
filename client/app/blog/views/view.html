@@ -8,8 +8,7 @@
                 <a href="#/" title=""><span class="commet-reply">发表回复</span></a>
             </div>
         </div>
-        <div class="article-content">
-            [[article.article.contentHtml]]
+        <div class="article-content" ng-bind-html="article.article.contentHtml | rawHtml">       
         </div>
         <div class="article-footer">
             <span>本文章发布于</span><span class="text-warning">[[article.article.posted]]</span>。

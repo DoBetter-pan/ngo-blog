@@ -5,7 +5,7 @@
 * @date 2016-03-15
  */
 
-var blog = angular.module('blog', ['ngRoute', 'blog.services', 'util.directives']);
+var blog = angular.module('blog', ['ngRoute', 'blog.services', 'util.directives', 'util.filters']);
 
 blog.config(['$interpolateProvider', function($interpolateProvider){
     $interpolateProvider.startSymbol('[[').endSymbol(']]');
