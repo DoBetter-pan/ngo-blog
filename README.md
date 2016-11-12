@@ -27,7 +27,8 @@ A little blog web frame created by Golang and Angularjs. It is easy to setup one
     You should have installed mysql. Then import the data in server/data/ngo-blog.sql
     vim server/datawrapper/datawrapper.go
     change the following line using your database user and password:
-    var WrapperConfig *DbConfig = &DbConfig{"tcp", "127.0.0.1", "3306", "test", "123456", "ngo-blog", "charset=utf8"} 
+    var WrapperConfig *DbConfig = &DbConfig{"tcp", "127.0.0.1", "3306", "test", "123456", "ngo-blog", "charset=utf8"}
+    go get github.com/go-sql-driver/mysql 
     go build
     ./ngo-blog -host=127.0.0.1 -port=9898 
 Then you can visit http://127.0.0.1:9898/ to view the blogs.
@@ -84,6 +85,7 @@ ngo-blog是使用Golang与Angularjs编写的一个小的博客框架。利用ngo
     vim server/datawrapper/datawrapper.go
     使用自己数据库的密码代替下行中的用户（test）与密码（123456）：
     var WrapperConfig *DbConfig = &DbConfig{"tcp", "127.0.0.1", "3306", "test", "123456", "ngo-blog", "charset=utf8"} 
+    go get github.com/go-sql-driver/mysql 
     go build
     ./ngo-blog -host=127.0.0.1 -port=9898 
 访问 http://127.0.0.1:9898/ 可以浏览博客.
