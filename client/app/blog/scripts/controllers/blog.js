@@ -10,11 +10,23 @@ blog.controller('IndexCtrl', ['$scope', 'articles', function($scope, articles){
     $scope.articles = articles;
 }]);
 
-blog.controller('ListCtrl', ['$scope', 'articles', function($scope, articles){
+blog.controller('ListCtrl', ['$scope', '$timeout', 'articles', function($scope, $timeout, articles){
     //console.log(articles);
     $scope.articles = articles;
+    $scope.$on('$viewContentLoaded', function(){
+        $timeout(function() {
+            $("pre").addClass("prettyprint");
+            prettyPrint(); 
+        }, 0);
+    });
 }]);
 
-blog.controller('ViewCtrl', ['$scope', 'article', function($scope, article){
+blog.controller('ViewCtrl', ['$scope', '$timeout', 'article', function($scope, $timeout, article){
     $scope.article = article;
+    $scope.$on('$viewContentLoaded', function(){
+        $timeout(function() {
+            $("pre").addClass("prettyprint");
+            prettyPrint(); 
+        }, 0);
+    });
 }]);

@@ -57,15 +57,26 @@ func (controller *BlogController) CheckRules() map[string] []string {
 }
 
 func (controller *BlogController) IndexAction(w http.ResponseWriter, r *http.Request) {
+    startup := `
+    <script>
+    $(document).ready(function(){
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+    </script>`
     mainParams := &BlogMainParams{
         Stylesheets: []string {
             "../extensions/bootstrap-3.3.5/dist/css/bootstrap.min.css",
-            "../app/blog/styles/blog.css" },
+            "../app/blog/styles/blog.css",
+            "../extensions/google-code-prettify/prettify.css"},
         Javscripts: []string {
+            "../js/jquery-1.11.3/jquery-1.11.3.min.js",
+            "../extensions/bootstrap-3.3.5/dist/js/bootstrap.min.js",
+            "../extensions/google-code-prettify/prettify.js",
             "../extensions/angular-1.5.0/angular.js",
             "../extensions/angular-1.5.0/angular-route.js",
             "../extensions/angular-1.5.0/angular-resource.js",
-            "../app/blog/scripts/directives/directives.js",            
+            "../app/blog/scripts/directives/directives.js",
             "../app/blog/scripts/directives/visitorcounter.js",
             "../app/blog/scripts/filters/filters.js",
             "../app/blog/scripts/services/services.js",
@@ -73,6 +84,7 @@ func (controller *BlogController) IndexAction(w http.ResponseWriter, r *http.Req
             "../app/blog/scripts/controllers/blog.js" },
         Startup : "" }
 
+    mainParams.Startup = template.HTML(startup)
     linkModel := &model.LinkSrvModel{}
     linkList, _ := linkModel.FindAllLinks()
     mainParams.Shortcuts = make([]BlogLink, 0, 6)
