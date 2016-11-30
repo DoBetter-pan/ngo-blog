@@ -24,9 +24,16 @@ type DbConfig struct {
     Options      string  `json:"options"`
 }
 
+type WebsiteConfig struct {
+    Title       string   `json:"title"`
+    HasICP      int64    `json:"hasICP"`
+    ICP         string   `json:"icp"`
+}
+
 type NgoBlogConfig struct {
     Version  string               `json:"v"`
     Db       DbConfig             `json:"Db"`
+    Website  WebsiteConfig        `json:"website"` 
 }
 
 

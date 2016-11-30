@@ -8,5 +8,10 @@
         "password": "123456",
         "database": "ngo-blog",
         "options": "charset=utf8"
-    }
+    },
+    "website": {
+        "title": "Good Blog",
+        "hasICP": 0,
+        "icp": "xxxxxxxxx"
+    }    
 }
