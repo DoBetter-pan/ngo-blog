@@ -11,6 +11,7 @@ import (
     "fmt"
     "database/sql"
     _ "github.com/go-sql-driver/mysql"
+	config "ngo-blog/server/config"
 )
 
 type DbConfig struct {
@@ -33,6 +34,14 @@ var WrapperConn *DbConnection = &DbConnection{}
 
 func init() {
     var err error
+    ngoblogConfig := config.GetNgoBlogConfig()
+    WrapperConfig.Protocal = ngoblogConfig.Db.Protocal
+    WrapperConfig.Host = ngoblogConfig.Db.Host
+    WrapperConfig.Port = ngoblogConfig.Db.Port
+    WrapperConfig.User = ngoblogConfig.Db.User
+    WrapperConfig.Password = ngoblogConfig.Db.Password
+    WrapperConfig.Database = ngoblogConfig.Db.Database
+    WrapperConfig.Options = ngoblogConfig.Db.Options
     config := fmt.Sprintf("%s:%s@%s(%s:%s)/%s?%s", WrapperConfig.User, WrapperConfig.Password, WrapperConfig.Protocal, WrapperConfig.Host, WrapperConfig.Port, WrapperConfig.Database, WrapperConfig.Options)
     WrapperConn.DB, err = sql.Open("mysql", config)
     if err != nil {

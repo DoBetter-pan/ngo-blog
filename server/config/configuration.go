@@ -8,38 +8,39 @@
 package configuration
 
 import (
+    _ "fmt"
+    "log"
     "encoding/json"
-    "fmt"
     "io/ioutil"
 )
 
-type DatbaseConfig struct {
+type DbConfig struct {
     Protocal     string  `json:"protocal"`
     Host         string  `json:"host"`
-    Port         int64  `json:"port"`
+    Port         string  `json:"port"`
     User         string  `json:"user"`
-    Password     string `json:"password"`
-    Db           string  `json:"Db"`
-    Option       string  `json:"option"`
+    Password     string  `json:"password"`
+    Database     string  `json:"database"`
+    Options      string  `json:"options"`
 }
 
 type NgoBlogConfig struct {
     Version  string               `json:"v"`
-    Db       DatbaseConfig        `json:"Db"`
+    Db       DbConfig             `json:"Db"`
 }
 
+
 var ngoBlogConfig *NgoBlogConfig = &NgoBlogConfig{}
-var configFile string = "ngoblog.json"
+var configFile string = "config.json"
 
 func init() {
     data, err := ioutil.ReadFile(configFile)
     if err == nil {
-        err = json.Unmarshal(data, config)
+        err = json.Unmarshal(data, ngoBlogConfig)
     }
     if err != nil {
         log.Fatal("ngoBlogConfig: ", err)
     }
-    return config, err
 }
 
 
