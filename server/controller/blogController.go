@@ -13,6 +13,7 @@ import (
 	"log"
 	"html/template"
 	model "ngo-blog/server/model"
+	config "ngo-blog/server/config"
 )
 
 type BlogLink struct {
@@ -26,12 +27,18 @@ type BlogMenu struct {
     SubMenu []BlogLink
 }
 
+type BlogFooter struct {
+    HasICP  bool
+    ICP     string
+}
+
 type BlogMainParams struct {
     Stylesheets []string
     Javscripts []string
     Startup template.HTML
     Shortcuts []BlogLink
     Menus []BlogMenu
+    Footer BlogFooter
 }
 
 type BlogNewParams struct {
@@ -91,6 +98,10 @@ func (controller *BlogController) IndexAction(w http.ResponseWriter, r *http.Req
     for _, link := range(linkList) {
         mainParams.Shortcuts = append(mainParams.Shortcuts, BlogLink{Name:link.Name, Url:link.Url})
     }
+
+    ngoblogConfig := config.GetNgoBlogConfig()
+    mainParams.Footer.HasICP = ngoblogConfig.Website.HasICP
+    mainParams.Footer.ICP = ngoblogConfig.Website.ICP
 
     menuModel := &model.MenuSrvModel{}
     menuList, _ := menuModel.FindAllMenus()

@@ -11,7 +11,7 @@
     },
     "website": {
         "title": "Good Blog",
-        "hasICP": 0,
+        "hasICP": true,
         "icp": "xxxxxxxxx"
     }    
 }

@@ -26,7 +26,7 @@ type DbConfig struct {
 
 type WebsiteConfig struct {
     Title       string   `json:"title"`
-    HasICP      int64    `json:"hasICP"`
+    HasICP      bool     `json:"hasICP"`
     ICP         string   `json:"icp"`
 }
 
