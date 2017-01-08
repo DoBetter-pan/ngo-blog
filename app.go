@@ -278,10 +278,17 @@ func loginSrvHandler(w http.ResponseWriter, r *http.Request) {
         })
 }
 
-
 func counterSrvHandler(w http.ResponseWriter, r *http.Request) {
     counterSrv := controller.NewCounterSrvController()
     controller := reflect.ValueOf(counterSrv)
+    controllerResty(w, r, func() reflect.Value {
+        return controller
+        })
+}
+
+func postlikeSrvHandler(w http.ResponseWriter, r *http.Request) {
+    postlikeSrv := controller.NewPostlikeSrvController()
+    controller := reflect.ValueOf(postlikeSrv)
     controllerResty(w, r, func() reflect.Value {
         return controller
         })
@@ -326,7 +333,9 @@ func main() {
     http.HandleFunc("/loginsrv", loginSrvHandler)
     http.HandleFunc("/loginsrv/", loginSrvHandler)
     http.HandleFunc("/countersrv", counterSrvHandler)
-    http.HandleFunc("/countersrv/", counterSrvHandler)    
+    http.HandleFunc("/countersrv/", counterSrvHandler)
+    http.HandleFunc("/postlikesrv", postlikeSrvHandler)
+    http.HandleFunc("/postlikesrv/", postlikeSrvHandler)           
     server := fmt.Sprintf("%s:%d", p.host, p.port)
 	err := http.ListenAndServe(server, nil)
 	if err != nil {

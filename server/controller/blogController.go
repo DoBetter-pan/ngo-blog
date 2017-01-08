@@ -75,6 +75,7 @@ func (controller *BlogController) IndexAction(w http.ResponseWriter, r *http.Req
         Stylesheets: []string {
             "../extensions/bootstrap-3.3.5/dist/css/bootstrap.min.css",
             "../app/blog/styles/blog.css",
+            "../app/blog/styles/postlike.css",
             "../extensions/google-code-prettify/prettify.css"},
         Javscripts: []string {
             "../js/jquery-1.11.3/jquery-1.11.3.min.js",
@@ -85,6 +86,7 @@ func (controller *BlogController) IndexAction(w http.ResponseWriter, r *http.Req
             "../extensions/angular-1.5.0/angular-resource.js",
             "../app/blog/scripts/directives/directives.js",
             "../app/blog/scripts/directives/visitorcounter.js",
+            "../app/blog/scripts/directives/postlike.js",
             "../app/blog/scripts/filters/filters.js",
             "../app/blog/scripts/services/services.js",
             "../app/blog/scripts/blog.js",

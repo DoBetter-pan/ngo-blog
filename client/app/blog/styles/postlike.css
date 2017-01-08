@@ -1,0 +1,207 @@
+/** 
+* @file postlike.css
+* @brief 
+* @author yingx
+* @date 2017-01-07
+*/
+
+.postlike-action {
+	float: left;
+	width: 100%;
+	height: 100%;
+}
+
+.postlike-action img {
+	border:none !important;
+	padding: 0px !important;
+}
+
+.postlike-action .postlike-position {
+	width:auto;
+}
+
+.postlike-left {
+	float: left;
+}
+
+.postlike-right {
+	float: right;
+}
+
+.postlike-like, .postlike-unlike {
+	float:left;
+	width:auto;
+}
+
+.postlike-unlike {
+	padding-left:7px;	
+}
+
+.postlike-like, .postlike-unlike, .postlike-status-img, .postlike-status-msg {
+	float: left;		
+}
+
+.postlike-pointer {
+	cursor:pointer !important;	
+}
+
+.postlike-likecount, .postlike-unlikecount {
+	float:left;
+	width: auto;
+	padding:0 0 0 6px;
+	font-size: 14px;
+	line-height: 18px;
+}		
+
+.postlike-likecount {
+	color: green;
+}
+
+.postlike-unlikecount {
+	color: red;		
+}
+
+.postlike-status {
+	color: gray;
+	padding: 0 7px 0 7px;
+	font-size: 14px;
+	line-height: 18px;	
+}
+.postlike-status .postlike-status_msg {
+	width: auto;
+	margin: 0 3px 0 0;	
+}
+.postlike-loading-img {
+	background:url(postlike/loading.gif) no-repeat scroll 0 0 !important;
+	padding:0px 5px;
+}
+.postlike-clear {
+	clear:both;
+}
+
+/*** START DEFAULT THUMB UP/DOWN STYLE ***/	
+.postlike-likebg-, .postlike-unlikebg-, .postlike-likebg-default, .postlike-unlikebg-default {
+	width: 16px;
+	height: 18px;
+}
+
+.postlike-likebg-, .postlike-likebg-default {
+	background:url(postlike/thumb_up1.png) no-repeat left top !important;	
+}
+
+.postlike-likebg-:hover, .postlike-likebg-default:hover {
+	background:url(postlike/thumb_up1.png) no-repeat left bottom !important;	
+}		
+
+.postlike-unlikebg-, .postlike-unlikebg-default {
+	background:url(postlike/thumb_down2.png) no-repeat left top !important;	
+}
+
+.postlike-unlikebg-:hover, .postlike-unlikebg-default:hover {
+	background:url(postlike/thumb_down2.png) no-repeat left bottom !important;	
+}
+
+.postlike-likebg- .postlike-likecount, .postlike-likebg-default .postlike-likecount {
+	color: green;
+}
+
+.postlike-unlikebg- .postlike-unlikecount, .postlike-unlikebg-default.postlike-unlikecount {
+	color: red;
+}
+/*** END DEFAULT THUMB UP/DOWN STYLE ***/
+
+/*** START FIRST THUMB UP/DOWN STYLE ***/	
+.postlike-likebg-style1 img,  .postlike-unlikebg-style1 img{
+	width: 14px;
+	height: 16px;
+	float:left;
+}
+
+.postlike-likebg-style1 img{
+	background:url(postlike/thumb_up1.png) repeat scroll 0 0 !important;
+}        
+
+.postlike-likebg-style1 img:hover{
+	background:url(postlike/thumb_up1.png) repeat scroll 0 -16px !important;
+}
+
+.postlike-unlikebg-style1 img{
+	background:url(postlike/thumb_down1.png) repeat scroll 0 0 !important;
+}
+
+.postlike-unlikebg-style1 img:hover {
+	background:url(postlike/thumb_down1.png) repeat scroll 0 -16px !important;
+}
+
+.postlike-likebg-style1 .postlike-likecount {
+	color: green;
+}
+
+.postlike-unlikebg-style1 .postlike-unlikecount {
+	color: red;		
+}
+/*** END FIRST THUMB UP/DOWN STYLE ***/		
+
+/** START Style2 STYLE **/
+.postlike-likebg-style2 img,  .postlike-unlikebg-style2 img{
+	width: 16px;
+	height: 18px;
+	float:left;
+}
+
+.postlike-likebg-style2 img{
+	background:url(postlike/thumb_up2.png) repeat scroll 0 0 !important;
+}        
+
+.postlike-likebg-style2 img:hover{
+	background:url(postlike/thumb_up2.png) repeat scroll 0 -18px !important;
+}
+
+.postlike-unlikebg-style2 img{
+	background:url(postlike/thumb_down2.png) repeat scroll 0 0 !important;
+}
+
+.postlike-unlikebg-style2 img:hover {
+	background:url(postlike/thumb_down2.png) repeat scroll 0 -18px !important;
+}
+
+.postlike-likebg-style2 .postlike-likecount {
+	color: green;
+}
+
+.postlike-unlikebg-style2 .postlike-unlikecount {
+	color: red;		
+}
+/** END Style2 STYLE**/
+
+/** START Style3 STYLE **/
+.postlike-likebg-style3 img,  .postlike-unlikebg-style3 img{
+	width: 16px;
+	height: 18px;
+	float:left;
+}
+
+.postlike-likebg-style3 img{
+	background:url(postlike/thumb_up3.png) repeat scroll 0 0 !important;
+}        
+
+.postlike-likebg-style3 img:hover{
+	background:url(postlike/thumb_up3.png) repeat scroll 0 -18px !important;
+}
+
+.postlike-unlikebg-style3 img{
+	background:url(postlike/thumb_down3.png) repeat scroll 0 0 !important;
+}
+
+.postlike-unlikebg-style3 img:hover {
+	background:url(postlike/thumb_down3.png) repeat scroll 0 -18px !important;
+}
+
+.postlike-likebg-style3 .postlike-likecount {
+	color: green;
+}
+
+.postlike-unlikebg-style3 .postlike-unlikecount {
+	color: red;		
+}
+/** END Style3 STYLE**/

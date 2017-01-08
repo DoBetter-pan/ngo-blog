@@ -15,6 +15,7 @@
             <span>属于</span><a href="[[article.article.sectionUrl]]">[[article.article.sectionName]]</a>，<a href="[[article.article.categoryUrl]]">[[article.article.categoryName]]</a>分类。
             <span>作者是</span><span class="text-warning">[[article.article.author]]</span>
         </div>
+        <div postlike src="/postlikesrv/postlike" pid="[[article.article.id]]">xxx</div>        
     </div>
     <div class="article-navigation">
         <div class="nav-previous" ng-show="article.previousId!=-1">
@@ -24,4 +25,5 @@
             <a href="[[article.nextUrl]]"><span class="nav-meta">[[article.nextTitle]]→</span></a>
         </div>
     </div>
+
 </div>

@@ -9,7 +9,7 @@ package controller
 
 import (
 	"net/http"
-	"fmt"
+	_ "fmt"
 	_ "errors"
     "strings"
     _ "strconv"
@@ -39,7 +39,6 @@ func (controller *CounterSrvController) Query(w http.ResponseWriter, r *http.Req
     }
     */
 
-    fmt.Println("==========>Query!!!")
     res := "[]"
     SendBack(w, res)
 }
@@ -55,7 +54,6 @@ func (controller *CounterSrvController) Get(w http.ResponseWriter, r *http.Reque
     }
     */
 
-    fmt.Println("==========>Get!!!")
     res := "{}"
     SendBack(w, res)
 }
@@ -76,7 +74,6 @@ func (controller *CounterSrvController) New(w http.ResponseWriter, r *http.Reque
     }
     */
 
-    fmt.Println("==========>New!!!")
     SendBack(w, res)
 }
 
@@ -100,7 +97,6 @@ func (controller *CounterSrvController) Update(w http.ResponseWriter, r *http.Re
     }
     */
 
-    fmt.Println("==========>Update!!!")
     SendBack(w, res)
 }
 
@@ -113,7 +109,6 @@ func (controller *CounterSrvController) Delete(w http.ResponseWriter, r *http.Re
     res := GetError(err)
     */
 
-    fmt.Println("==========>Delete!!!")
     res := GetError(nil)
     SendBack(w, res)
 }
