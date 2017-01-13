@@ -22,20 +22,20 @@ func CreateUrl(t int, id int64, p int64) string{
     switch t {
     //section
     case BLOG_SECTION:
-        str = fmt.Sprintf("#/list?s=%d&p=%d", id, p)
+        str = fmt.Sprintf("/blog#/list?s=%d&p=%d", id, p)
     //category
     case BLOG_CATEGORY:
-        str = fmt.Sprintf("#/list?c=%d&p=%d", id, p)
+        str = fmt.Sprintf("/blog#/list?c=%d&p=%d", id, p)
     //article
     case BLOG_ARTICLE:
-        str = fmt.Sprintf("#/view/%d", id)
+        str = fmt.Sprintf("/blog#/view/%d", id)
     }
 
     return str
 }
 
 func CreateUrlByKeyValue(key string, value, p int64) string {
-    str := fmt.Sprintf("#/list?%s=%d&p=%d", key, value, p)
+    str := fmt.Sprintf("/blog#/list?%s=%d&p=%d", key, value, p)
     return str
 }
 
