@@ -9,6 +9,11 @@ A little blog web frame created by Golang and Angularjs. It is easy to setup one
 - It is extended. You can do more things than just blog.
 - Full support Angularjs. Server and client are separate.
 
+# Supported features
+- Article list, view, writer
+- Up and down statistics
+- Pretty code
+
 # Usage:
 
 ## Dependencies:
@@ -65,6 +70,11 @@ ngo-blog是使用Golang与Angularjs编写的一个小的博客框架。利用ngo
 - 他是非常简单部署的。 仅仅需要设置了Golang环境，然后 go build，然后就可以启动主服务了。
 - 他是可扩展的。 你可以使用该框架做更多的事情，不仅仅事博客。
 - 完全支持Angularjs。 服务与客户端事完全分离的。
+
+# 支持的功能
+- 博客的列表显示、单个显示、撰写
+- 赞踩功能
+- 美化显示代码
 
 # 使用与安装:
 
