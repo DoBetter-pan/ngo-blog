@@ -140,7 +140,7 @@ func controllerResty(w http.ResponseWriter, r *http.Request, c Controller) {
             }
         case "POST":
             //-1 represent new item
-            if id == "-1" {
+            if id == "-1" || id == "" {
                 action = "New"
             } else {
                 action = "Update"
@@ -294,6 +294,14 @@ func postlikeSrvHandler(w http.ResponseWriter, r *http.Request) {
         })
 }
 
+func uploadSrvHandler(w http.ResponseWriter, r *http.Request) {
+    uploadSrv := controller.NewUploadSrvController()
+    controller := reflect.ValueOf(uploadSrv)
+    controllerResty(w, r, func() reflect.Value {
+        return controller
+        })
+}
+
 func main() {
     p := handleCommandLine()
 
@@ -334,8 +342,8 @@ func main() {
     http.HandleFunc("/loginsrv/", loginSrvHandler)
     http.HandleFunc("/countersrv", counterSrvHandler)
     http.HandleFunc("/countersrv/", counterSrvHandler)
-    http.HandleFunc("/postlikesrv", postlikeSrvHandler)
-    http.HandleFunc("/postlikesrv/", postlikeSrvHandler)           
+    http.HandleFunc("/uploadsrv", uploadSrvHandler)
+    http.HandleFunc("/uploadsrv/", uploadSrvHandler)
     server := fmt.Sprintf("%s:%d", p.host, p.port)
 	err := http.ListenAndServe(server, nil)
 	if err != nil {

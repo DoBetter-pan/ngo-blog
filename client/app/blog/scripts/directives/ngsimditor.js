@@ -44,7 +44,7 @@ directives.directive('simditor', function () {
                 defalutImage: "images/image.png, images/image.jpg",
                 tabIndent: true,
                 upload: {
-                    url: '',
+                    url: '/uploadsrv/',
                     params: null,
                     fileKey: 'upload_file',
                     connectionCount: 3,

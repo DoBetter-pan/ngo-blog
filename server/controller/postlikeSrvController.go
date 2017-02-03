@@ -24,7 +24,7 @@ import (
 type Postlike struct {
     Message string `json:"message"`
     LikeCount int64 `json:"likecount"`
-    UnlikeCount int64 `json:"unlikecount"`     
+    UnlikeCount int64 `json:"unlikecount"`
 }
 
 type PostlikeSrvController struct {
@@ -134,7 +134,7 @@ func (controller *PostlikeSrvController) Postlike(w http.ResponseWriter, r *http
                     if ok {
                         userId, _ = strconv.ParseInt(strId, 10, 64)
                     }
-                    addr := strings.Split(r.RemoteAddr, ":") 
+                    addr := strings.Split(r.RemoteAddr, ":")
                     ip := addr[0]
                     cookiePostlike, err := r.Cookie("ngo-postlike")
                     if err != nil {
@@ -144,8 +144,8 @@ func (controller *PostlikeSrvController) Postlike(w http.ResponseWriter, r *http
                         cookieStr = fmt.Sprintf("%s_%d_%d", ip, r1, r2)
                     } else {
                         cookieStr = cookiePostlike.Value
-                    }                   
-                    postlikeModel := &model.PostlikeSrvModel{} 
+                    }
+                    postlikeModel := &model.PostlikeSrvModel{}
                     count := postlikeModel.GetLikeUnlikeCount(postId, userId, cookieStr)
                     if count > 0 {
                         postlike.Message = "Already Voted!"
@@ -157,10 +157,10 @@ func (controller *PostlikeSrvController) Postlike(w http.ResponseWriter, r *http
                             value = -1
                         }
                         postlikeModel.Insert(postId, value, ip, cookieStr, userId)
-                    }          
+                    }
                     postlike.LikeCount = postlikeModel.GetLikeCount(postId)
                     postlike.UnlikeCount = postlikeModel.GetUnlikeCount(postId)
-                }    
+                }
             }
         }
 
@@ -172,8 +172,8 @@ func (controller *PostlikeSrvController) Postlike(w http.ResponseWriter, r *http
         }
 
         cookie := http.Cookie{Name: "ngo-postlike", Value: cookieStr, MaxAge: 3600*24*31}
-        http.SetCookie(w, &cookie)        
-        SendBack(w, res)             
+        http.SetCookie(w, &cookie)
+        SendBack(w, res)
     } else {
         res := `{"message":"", "likecount":0, "unlikecount":0 }`
         var postlike Postlike
@@ -185,9 +185,9 @@ func (controller *PostlikeSrvController) Postlike(w http.ResponseWriter, r *http
                 if err == nil {
                     postlikeModel := &model.PostlikeSrvModel{}
                     postlike.LikeCount = postlikeModel.GetLikeCount(postId)
-                    postlike.UnlikeCount = postlikeModel.GetUnlikeCount(postId)     
+                    postlike.UnlikeCount = postlikeModel.GetUnlikeCount(postId)
                 }
-            }                
+            }
         }
 
         data, err := json.Marshal(postlike)
@@ -197,7 +197,7 @@ func (controller *PostlikeSrvController) Postlike(w http.ResponseWriter, r *http
             res = string(data)
         }
 
-        SendBack(w, res)        
+        SendBack(w, res)
     }
 }
 
