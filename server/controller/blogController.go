@@ -141,6 +141,7 @@ func (controller *BlogController) AdminAction(w http.ResponseWriter, r *http.Req
         Stylesheets: []string {
             "../extensions/bootstrap-3.3.5/dist/css/bootstrap.min.css",
             "../extensions/simditor/styles/simditor.css",
+            "../extensions/simditor-markdown/styles/simditor-markdown.css",
             "../app/blog/styles/admin.css" },
         Javscripts: []string {
             "../js/jquery-1.11.3/jquery-1.11.3.min.js",
@@ -149,6 +150,9 @@ func (controller *BlogController) AdminAction(w http.ResponseWriter, r *http.Req
             "../extensions/simditor/scripts/hotkeys.js",
             "../extensions/simditor/scripts/uploader.js",
             "../extensions/simditor/scripts/simditor.js",
+            "../extensions/simditor-markdown/scripts/to-markdown.js",
+            "../extensions/simditor-markdown/scripts/marked.js",
+            "../extensions/simditor-markdown/scripts/simditor-markdown.js",        
             "../extensions/angular-1.5.0/angular.js",
             "../extensions/angular-1.5.0/angular-route.js",
             "../extensions/angular-1.5.0/angular-resource.js",

@@ -27,7 +27,9 @@ directives.directive('simditor', function () {
         '|',
         'indent',
         'outdent',
-        'alignment'
+        'alignment',
+        '|',
+        'markdown'
     ];
     return {
         require: "?^ngModel",
@@ -131,6 +133,23 @@ directives.directive('simditor', function () {
             };
 
             scope.simditor.on('valuechanged', function () {
+                scope.$apply(function(){
+                    var $target = element.find('.simditor-body');
+                    ngModel.$setViewValue($target.html());
+
+                    if (attrs.ngRequired != undefined && attrs.ngRequired != "false") {
+                        var text = $target.text();
+
+                        if(text.trim() === "") {
+                            ngModel.$setValidity("required", false);
+                        } else {
+                            ngModel.$setValidity("required", true);
+                        }
+                    }
+                });
+            });
+
+            scope.simditor.on('markvaluechanged', function () {
                 scope.$apply(function(){
                     var $target = element.find('.simditor-body');
                     ngModel.$setViewValue($target.html());
