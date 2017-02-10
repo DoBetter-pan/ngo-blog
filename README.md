@@ -13,6 +13,9 @@ A little blog web frame created by Golang and Angularjs. It is easy to setup one
 - Article list, view, writer
 - Up and down statistics
 - Pretty code
+- Editor
+- Markdown editor
+- Image upload
 
 # Usage:
 
@@ -49,10 +52,9 @@ You must install mysql first.
 You can create a new module by modulehelper.sh.
     
 # What should we do next?
-- up and down statistics
 - comments
-- markdown
-- pretty code 
+- article permission
+- gallary
 - ...
 
 # Support and contact
@@ -75,6 +77,9 @@ ngo-blog是使用Golang与Angularjs编写的一个小的博客框架。利用ngo
 - 博客的列表显示、单个显示、撰写
 - 赞踩功能
 - 美化显示代码
+- 文本输入
+- 图片上传
+- markdown支持
 
 # 使用与安装:
 
@@ -111,11 +116,11 @@ ngo-blog是使用Golang与Angularjs编写的一个小的博客框架。利用ngo
 你可以使用modulehelper.sh创建新的模块。
     
 # 接下来将做什么?
-- 点赞功能
 - 评论功能
-- markdown支持
-- 源代码美化显示
 - 管理页面的完善 
+- 文本大纲
+- 图库功能
+- 文章权限控制
 - ...
 
 # 支持与联系
