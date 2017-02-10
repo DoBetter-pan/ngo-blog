@@ -4336,7 +4336,7 @@ ImageButton = (function(superClass) {
           type: 'file',
           title: _this._t('uploadImage'),
           multiple: true,
-          accept: 'image/*'
+          //accept: 'image/*'
         }).appendTo($uploadItem);
       };
     })(this);
@@ -4732,7 +4732,7 @@ ImagePopover = (function(superClass) {
           type: 'file',
           title: _this._t('uploadImage'),
           multiple: true,
-          accept: 'image/*'
+          //accept: 'image/*'
         }).appendTo($uploadBtn);
       };
     })(this);
