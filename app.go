@@ -342,6 +342,8 @@ func main() {
     http.HandleFunc("/loginsrv/", loginSrvHandler)
     http.HandleFunc("/countersrv", counterSrvHandler)
     http.HandleFunc("/countersrv/", counterSrvHandler)
+    http.HandleFunc("/postlikesrv", postlikeSrvHandler)
+    http.HandleFunc("/postlikesrv/", postlikeSrvHandler)      
     http.HandleFunc("/uploadsrv", uploadSrvHandler)
     http.HandleFunc("/uploadsrv/", uploadSrvHandler)
     server := fmt.Sprintf("%s:%d", p.host, p.port)
