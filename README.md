@@ -17,6 +17,9 @@ A little blog web frame created by Golang and Angularjs. It is easy to setup one
 - Markdown editor
 - Image upload
 
+# Demo
+http://www.pange.xin/
+
 # Usage:
 
 ## Dependencies:
@@ -80,6 +83,9 @@ ngo-blog是使用Golang与Angularjs编写的一个小的博客框架。利用ngo
 - 文本输入
 - 图片上传
 - markdown支持
+
+# 线上例子
+http://www.pange.xin/
 
 # 使用与安装:
 
