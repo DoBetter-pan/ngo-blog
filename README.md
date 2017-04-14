@@ -43,6 +43,9 @@ http://www.pange.xin/
 - Db config
 
     - update the database user and password to your own.
+    - vim server/datawrapper/datawrapper.go
+    - change the following line using your database user and password:
+    - var WrapperConfig *DbConfig = &DbConfig{"tcp", "127.0.0.1", "3306", "test", "123456", "ngo-blog", "charset=utf8"}
 
 - Dependency install
 
