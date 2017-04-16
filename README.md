@@ -42,15 +42,16 @@ http://www.pange.xin/
 
 - Db config
 
-        update the database user and password to your own.
+    - update the database user and password to your own.
 
 - Dependency install
 
-    go get github.com/go-sql-driver/mysql 
+    - go get github.com/go-sql-driver/mysql 
 
 - Build & Run
-    go build
-    ./ngo-blog -host=127.0.0.1 -port=9898 
+
+    - go build
+    - ./ngo-blog -host=127.0.0.1 -port=9898 
 
 - Usage
 
