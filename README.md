@@ -30,21 +30,34 @@ http://www.pange.xin/
 
 ## Install and run:
 
-    mkdir ~/go_codes/src
-    cd ~/go_codes/src
+- Clone Code
+```
+    mkdir ~/go_codes/src && cd ~/go_codes/src
     git clone https://github.com/DoBetter-pan/ngo-blog.git
+
     cd ngo-blog
     source setenv.sh
     You should have installed mysql. Then import the data in server/data/ngo-blog.sql
-    vim server/datawrapper/datawrapper.go
-    change the following line using your database user and password:
-    var WrapperConfig *DbConfig = &DbConfig{"tcp", "127.0.0.1", "3306", "test", "123456", "ngo-blog", "charset=utf8"}
-    go get github.com/go-sql-driver/mysql 
-    go build
-    ./ngo-blog -host=127.0.0.1 -port=9898 
-Then you can visit http://127.0.0.1:9898/ to view the blogs.
-Then you can visit http://127.0.0.1:9898/blog/admin to write a new blog.
-The default user and password are yingx and 123456.
+```
+
+- Db config
+
+    - update the database user and password to your own.
+
+- Dependency install
+
+    - go get github.com/go-sql-driver/mysql 
+
+- Build & Run
+
+    - go build
+    - ./ngo-blog -host=127.0.0.1 -port=9898 
+
+- Usage
+
+    - Then you can visit http://127.0.0.1:9898/ to view the blogs.
+    - Then you can visit http://127.0.0.1:9898/blog/admin to write a new blog.
+    - The default user and password are yingx and 123456.
 
 Note:
 You must setup your golang environment first and will change your GOPATH when executing "source setenv.sh".
