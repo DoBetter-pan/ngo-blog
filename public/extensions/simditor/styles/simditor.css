@@ -67,6 +67,10 @@
   content: '\f00b';
 }
 
+.simditor-icon-attachment:before {
+  content: '\f00b';
+}
+
 .simditor-icon-minus:before {
   content: '\f00c';
 }
@@ -335,6 +339,18 @@
   overflow: hidden;
 }
 .simditor .simditor-toolbar > ul > li > .toolbar-item.toolbar-item-image > input[type=file] {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  opacity: 0;
+  font-size: 100px;
+  cursor: pointer;
+}
+.simditor .simditor-toolbar > ul > li > .toolbar-item.toolbar-item-attachment {
+  position: relative;
+  overflow: hidden;
+}
+.simditor .simditor-toolbar > ul > li > .toolbar-item.toolbar-item-attachment > input[type=file] {
   position: absolute;
   right: 0px;
   top: 0px;

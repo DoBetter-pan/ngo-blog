@@ -23,6 +23,7 @@ directives.directive('simditor', function () {
         '|',
         'link',
         'image',
+        'attachment',
         'hr',          
         '|',
         'indent',

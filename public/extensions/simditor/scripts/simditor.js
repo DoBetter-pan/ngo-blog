@@ -19,7 +19,7 @@
   }
 }(this, function ($, SimpleModule, simpleHotkeys, simpleUploader) {
 
-var AlignmentButton, BlockquoteButton, BoldButton, Button, Clipboard, CodeButton, CodePopover, ColorButton, FontScaleButton, Formatter, HrButton, ImageButton, ImagePopover, IndentButton, Indentation, InputManager, ItalicButton, Keystroke, LinkButton, LinkPopover, ListButton, OrderListButton, OutdentButton, Popover, Selection, Simditor, StrikethroughButton, TableButton, TitleButton, Toolbar, UnderlineButton, UndoManager, UnorderListButton, Util,
+var AlignmentButton, BlockquoteButton, BoldButton, Button, Clipboard, CodeButton, CodePopover, ColorButton, FontScaleButton, Formatter, HrButton, ImageButton, ImagePopover, AttachmentButton, IndentButton, Indentation, InputManager, ItalicButton, Keystroke, LinkButton, LinkPopover, ListButton, OrderListButton, OutdentButton, Popover, Selection, Simditor, StrikethroughButton, TableButton, TitleButton, Toolbar, UnderlineButton, UndoManager, UnorderListButton, Util,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty,
   indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; },
@@ -4363,7 +4363,7 @@ ImageButton = (function(superClass) {
         return _this.wrapper.removeClass('menu-on');
       };
     })(this));
-    this.editor.uploader.on('beforeupload', (function(_this) {
+    this.editor.uploader.on('beforeupload.image', (function(_this) {
       return function(e, file) {
         var $img;
         if (!file.inline) {
@@ -4413,8 +4413,8 @@ ImageButton = (function(superClass) {
       }
       return $mask.find('.progress').height((100 - percent) + "%");
     }, 500), this);
-    this.editor.uploader.on('uploadprogress', uploadProgress);
-    this.editor.uploader.on('uploadsuccess', (function(_this) {
+    this.editor.uploader.on('uploadprogress.image', uploadProgress);
+    this.editor.uploader.on('uploadsuccess.image', (function(_this) {
       return function(e, file, result) {
         var $img, img_path, msg;
         if (!file.inline) {
@@ -4461,7 +4461,7 @@ ImageButton = (function(superClass) {
         }
       };
     })(this));
-    return this.editor.uploader.on('uploaderror', (function(_this) {
+    return this.editor.uploader.on('uploaderror.image', (function(_this) {
       return function(e, file, xhr) {
         var $img, msg, result;
         if (!file.inline) {
@@ -4852,6 +4852,410 @@ ImagePopover = (function(superClass) {
 })(Popover);
 
 Simditor.Toolbar.addButton(ImageButton);
+
+AttachmentButton = (function(superClass) {
+  extend(AttachmentButton, superClass);
+
+  function AttachmentButton() {
+    return AttachmentButton.__super__.constructor.apply(this, arguments);
+  }
+
+  AttachmentButton.prototype.name = 'attachment';
+
+  AttachmentButton.prototype.icon = 'picture-o';
+
+  AttachmentButton.prototype.htmlTag = 'a';
+
+  AttachmentButton.prototype.disableTag = 'pre, table';
+
+  AttachmentButton.prototype.defaultImage = '';
+
+  AttachmentButton.prototype.needFocus = false;
+
+  AttachmentButton.prototype._init = function() {
+    var item, k, len, ref;
+    this.menu = false;
+    this.defaultImage = this.editor.opts.defaultImage;
+    /*
+    this.editor.body.on('click', 'img:not([data-non-attachment])', (function(_this) {
+      return function(e) {
+        var $img, range;
+        $img = $(e.currentTarget);
+        range = document.createRange();
+        range.selectNode($img[0]);
+        _this.editor.selection.range(range);
+        if (!_this.editor.util.support.onselectionchange) {
+          _this.editor.trigger('selectionchanged');
+        }
+        return false;
+      };
+    })(this));
+    this.editor.body.on('mouseup', 'img:not([data-non-attachment])', function(e) {
+      return false;
+    });
+    */
+    this.editor.on('selectionchanged.attachment', (function(_this) {
+      return function() {
+        /*
+        var $contents, $img, range;
+        range = _this.editor.selection.range();
+        if (range == null) {
+          return;
+        }
+        $contents = $(range.cloneContents()).contents();
+        if ($contents.length === 1 && $contents.is('img:not([data-non-attachment])')) {
+          $img = $(range.startContainer).contents().eq(range.startOffset);
+        } 
+        */
+      };
+    })(this));
+    this.editor.on('valuechanged.attachment', (function(_this) {
+      return function() {
+        var $masks;
+        $masks = _this.editor.wrapper.find('.simditor-attachment-loading');
+        if (!($masks.length > 0)) {
+          return;
+        }
+        /*
+        return $masks.each(function(i, mask) {
+          var $img, $mask, file;
+          $mask = $(mask);
+          $img = $mask.data('img');
+          if (!($img && $img.parent().length > 0)) {
+            $mask.remove();
+            if ($img) {
+              file = $img.data('file');
+              if (file) {
+                _this.editor.uploader.cancel(file);
+                if (_this.editor.body.find('img.uploading').length < 1) {
+                  return _this.editor.uploader.trigger('uploadready', [file]);
+                }
+              }
+            }
+          }
+        });
+        */
+      };
+    })(this));
+    return AttachmentButton.__super__._init.call(this);
+  };
+
+  AttachmentButton.prototype.render = function() {
+    var args;
+    args = 1 <= arguments.length ? slice.call(arguments, 0) : [];
+    AttachmentButton.__super__.render.apply(this, args);
+    return this._initUploader(this.el);
+  };
+
+  AttachmentButton.prototype._initUploader = function($uploadItem) {
+    var $input, createInput, uploadProgress;
+    if (this.editor.uploader == null) {
+      this.el.find('.btn-upload').remove();
+      return;
+    }
+    $input = null;
+    createInput = (function(_this) {
+      return function() {
+        if ($input) {
+          $input.remove();
+        }
+        return $input = $('<input/>', {
+          type: 'file',
+          title: _this._t('uploadAttachment'),
+          multiple: true,
+          //accept: 'image/*'
+        }).appendTo($uploadItem);
+      };
+    })(this);
+    createInput();
+    $uploadItem.on('click mousedown', 'input[type=file]', function(e) {
+      return e.stopPropagation();
+    });
+    $uploadItem.on('change', 'input[type=file]', (function(_this) {
+      return function(e) {
+        if (_this.editor.inputManager.focused) {
+          _this.editor.uploader.upload($input, {
+            buttonName: "attachment",
+            inline: true
+          });
+          createInput();
+        } else {
+          _this.editor.one('focus', function(e) {
+            _this.editor.uploader.upload($input, {
+              buttonName: "attachment",
+              inline: true
+            });
+            return createInput();
+          });
+          _this.editor.focus();
+        }
+        return _this.wrapper.removeClass('menu-on');
+      };
+    })(this));
+    this.editor.uploader.on('beforeupload.attachment', (function(_this) {
+      return function(e, file) {
+        var $attachment;
+        if (!file.inline) {
+          return;
+        }
+        if (file.attachment) {
+          $attachment = $(file.attachment);
+        } else {
+          $attachment = _this.createAttachment(file.name);
+          file.attachment = $attachment;
+        }
+        $attachment.addClass('uploading');
+        $attachment.data('file', file);
+
+          var href;
+          href = $attachment ? $attachment.href : _this.defaultImage;
+          return _this.loadAttachment($attachment, href, function() {
+              /*
+            if (_this.popover.active) {
+              _this.popover.refresh();
+              return _this.popover.srcEl.val(_this._t('uploading')).prop('disabled', true);
+            }
+              */
+          });
+      };
+    })(this));
+    uploadProgress = $.proxy(this.editor.util.throttle(function(e, file, loaded, total) {
+      var $attachment, $mask, percent;
+      if (!file.inline) {
+        return;
+      }
+      $mask = file.attachment.data('mask');
+      if (!$mask) {
+        return;
+      }
+      $attachment = $mask.data('attachment');
+      if (!($attachment.hasClass('uploading') && $attachment.parent().length > 0)) {
+        $mask.remove();
+        return;
+      }
+      percent = loaded / total;
+      percent = (percent * 100).toFixed(0);
+      if (percent > 99) {
+        percent = 99;
+      }
+      return $mask.find('.progress').height((100 - percent) + "%");
+    }, 500), this);
+    this.editor.uploader.on('uploadprogress.attachment', uploadProgress);
+    this.editor.uploader.on('uploadsuccess.attachment', (function(_this) {
+      return function(e, file, result) {
+        var $attachment, attachment_path, msg;
+        if (!file.inline) {
+          return;
+        }
+        $attachment = file.attachment;
+        if (!($attachment.hasClass('uploading') && $attachment.parent().length > 0)) {
+          return;
+        }
+        if (typeof result !== 'object') {
+          try {
+            result = $.parseJSON(result);
+          } catch (_error) {
+            e = _error;
+            result = {
+              success: false
+            };
+          }
+        }
+        if (result.success === false) {
+          msg = result.msg || _this._t('uploadFailed');
+          alert(msg);
+          attachment_path = _this.defaultImage;
+        } else {
+          attachment_path = result.file_path;
+        }
+        _this.loadAttachment($attachment, attachment_path, function() {
+          var $mask;
+          $attachment.removeData('file');
+          $attachment.removeClass('uploading').removeClass('loading');
+          $mask = $attachment.data('mask');
+          if ($mask) {
+            $mask.remove();
+          }
+          $attachment.removeData('mask');
+          _this.editor.trigger('valuechanged');
+          if (_this.editor.body.find('attachment.uploading').length < 1) {
+            return _this.editor.uploader.trigger('uploadready', [file, result]);
+          }
+        });
+        /*
+        if (_this.popover.active) {
+          _this.popover.srcEl.prop('disabled', false);
+          return _this.popover.srcEl.val(result.file_path);
+        }
+        */
+      };
+    })(this));
+    return this.editor.uploader.on('uploaderror.attachment', (function(_this) {
+      return function(e, file, xhr) {
+        var $attachment, msg, result;
+        if (!file.inline) {
+          return;
+        }
+        if (xhr.statusText === 'abort') {
+          return;
+        }
+        if (xhr.responseText) {
+          try {
+            result = $.parseJSON(xhr.responseText);
+            msg = result.msg;
+          } catch (_error) {
+            e = _error;
+            msg = _this._t('uploadError');
+          }
+          alert(msg);
+        }
+        $attachment = file.attachment;
+        if (!($attachment.hasClass('uploading') && $attachment.parent().length > 0)) {
+          return;
+        }
+        _this.loadAttachment($attachment, _this.defaultImage, function() {
+          var $mask;
+          $attachment.removeData('file');
+          $attachment.removeClass('uploading').removeClass('loading');
+          $mask = $attachment.data('mask');
+          if ($mask) {
+            $mask.remove();
+          }
+          return $attachment.removeData('mask');
+        });
+        /*
+        if (_this.popover.active) {
+          _this.popover.srcEl.prop('disabled', false);
+          _this.popover.srcEl.val(_this.defaultImage);
+        }
+        */
+        _this.editor.trigger('valuechanged');
+        if (_this.editor.body.find('attachment.uploading').length < 1) {
+          return _this.editor.uploader.trigger('uploadready', [file, result]);
+        }
+      };
+    })(this));
+  };
+
+  AttachmentButton.prototype._status = function() {
+    return this._disableStatus();
+  };
+
+  AttachmentButton.prototype.loadAttachment = function($attachment, src, callback) {
+    var $mask, attachment, positionMask;
+    /*
+    positionMask = (function(_this) {
+      return function() {
+        var imgOffset, wrapperOffset;
+        imgOffset = $attachment.offset();
+        wrapperOffset = _this.editor.wrapper.offset();
+        return $mask.css({
+          top: imgOffset.top - wrapperOffset.top,
+          left: imgOffset.left - wrapperOffset.left,
+          width: $img.width(),
+          height: $img.height()
+        }).show();
+      };
+    })(this);
+    */
+    $attachment.attr('href', src);
+    $attachment.addClass('loading');
+    $mask = $attachment.data('mask');
+    if (!$mask) {
+      $mask = $('<div class="simditor-attachment-loading">\n  <div class="progress"></div>\n</div>').hide().appendTo(this.editor.wrapper);
+      //positionMask();
+      $attachment.data('mask', $mask);
+      $mask.data('attachment', $attachment);
+    }
+    /*
+    attachment = new Image();
+    attachment.onload = (function(_this) {
+      return function() {
+        var height, width;
+        if (!$attachment.hasClass('loading') && !$attachment.hasClass('uploading')) {
+          return;
+        }
+        width = attachment.width;
+        height = attachment.height;
+        $attachment.attr({
+          src: src,
+          width: width,
+          height: height,
+          'data-attachment-size': width + ',' + height
+        }).removeClass('loading');
+        if ($attachment.hasClass('uploading')) {
+          _this.editor.util.reflow(_this.editor.body);
+          positionMask();
+        } else {
+          $mask.remove();
+          $attachment.removeData('mask');
+        }
+        if ($.isFunction(callback)) {
+          return callback(attachment);
+        }
+      };
+    })(this);
+    attachment.onerror = function() {
+      if ($.isFunction(callback)) {
+        callback(false);
+      }
+      $mask.remove();
+      return $attachment.removeData('mask').removeClass('loading');
+    };
+    return attachment.src = src;
+    */
+    return src
+  };
+
+  AttachmentButton.prototype.createAttachment = function(name) {
+    var $attachment, range;
+    if (name == null) {
+      name = 'Attachment';
+    }
+    if (!this.editor.inputManager.focused) {
+      this.editor.focus();
+    }
+    range = this.editor.selection.range();
+    range.deleteContents();
+    this.editor.selection.range(range);
+    $attachment = $('<a/>').attr('alt', name);
+    $attachment.html(name);
+    /*
+      $link = $('<a/>', {
+        href: 'http://www.example.com',
+        target: '_blank',
+        text: linkText || this._t('linkText')
+      });
+      */
+    range.insertNode($attachment[0]);
+    this.editor.selection.setRangeAfter($attachment, range);
+    this.editor.trigger('valuechanged');
+    return $attachment;
+  };
+
+  AttachmentButton.prototype.command = function(src) {
+    var $attachment;
+    $attachment = this.createAttachment();
+    return this.loadAttachment($attachment, src || this.defaultImage, (function(_this) {
+      return function() {
+        _this.editor.trigger('valuechanged');
+        _this.editor.util.reflow($attachment);
+        $attachment.click();
+        /*
+        return _this.popover.one('popovershow', function() {
+          _this.popover.srcEl.focus();
+          return _this.popover.srcEl[0].select();
+        });
+        */
+      };
+    })(this));
+  };
+
+  return AttachmentButton;
+
+})(Button);
+
+Simditor.Toolbar.addButton(AttachmentButton);
 
 IndentButton = (function(superClass) {
   extend(IndentButton, superClass);

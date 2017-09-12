@@ -69,7 +69,7 @@ Uploader = (function(superClass) {
   })();
 
   Uploader.prototype.upload = function(file, opts) {
-    var f, i, key, len;
+    var f, i, key, len, n;
     if (opts == null) {
       opts = {};
     }
@@ -98,7 +98,8 @@ Uploader = (function(superClass) {
       this.queue.push(file);
       return;
     }
-    if (this.triggerHandler('beforeupload', [file]) === false) {
+    n = opts.buttonName || "image";
+    if (this.triggerHandler('beforeupload.' + n, [file]) === false) {
       return;
     }
     this.files.push(file);
@@ -126,7 +127,8 @@ Uploader = (function(superClass) {
   };
 
   Uploader.prototype._xhrUpload = function(file) {
-    var formData, k, ref, v;
+    var formData, k, ref, v, n;
+    n = file.buttonName || "image";
     formData = new FormData();
     formData.append(file.fileKey, file.obj);
     formData.append("original_filename", file.name);
@@ -163,24 +165,24 @@ Uploader = (function(superClass) {
           if (!e.lengthComputable) {
             return;
           }
-          return _this.trigger('uploadprogress', [file, e.loaded, e.total]);
+          return _this.trigger('uploadprogress.' + n, [file, e.loaded, e.total]);
         };
       })(this),
       error: (function(_this) {
         return function(xhr, status, err) {
-          return _this.trigger('uploaderror', [file, xhr, status]);
+          return _this.trigger('uploaderror.' + n, [file, xhr, status]);
         };
       })(this),
       success: (function(_this) {
         return function(result) {
-          _this.trigger('uploadprogress', [file, file.size, file.size]);
-          _this.trigger('uploadsuccess', [file, result]);
-          return $(document).trigger('uploadsuccess', [file, result, _this]);
+          _this.trigger('uploadprogress.' + n, [file, file.size, file.size]);
+          _this.trigger('uploadsuccess.' + n, [file, result]);
+          return $(document).trigger('uploadsuccess.' + n, [file, result, _this]);
         };
       })(this),
       complete: (function(_this) {
         return function(xhr, status) {
-          return _this.trigger('uploadcomplete', [file, xhr.responseText]);
+          return _this.trigger('uploadcomplete.' + n, [file, xhr.responseText]);
         };
       })(this)
     });
