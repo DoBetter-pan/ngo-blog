@@ -312,6 +312,7 @@ func main() {
 	http.Handle("/icons/", http.FileServer(http.Dir("public")))
 	http.Handle("/imges/", http.FileServer(http.Dir("public")))
 	http.Handle("/js/", http.FileServer(http.Dir("public")))
+    http.Handle("/upload/", http.FileServer(http.Dir("public")))    
 	//set app directory 
 	http.Handle("/app/", http.FileServer(http.Dir("client")))
 

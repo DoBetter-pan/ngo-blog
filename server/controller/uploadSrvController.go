@@ -91,7 +91,7 @@ func (controller *UploadSrvController) New(w http.ResponseWriter, r *http.Reques
                     r2 := rand.Intn(10000)
                     f := t.Format("150405")
                     filename := fmt.Sprintf("%s%s%d%d%d", path, f, userId, r1, r2)
-                    filepath = fmt.Sprintf("/public/upload/%s%s%d%d%d", timepath, f, userId, r1, r2)
+                    filepath = fmt.Sprintf("/upload/%s%s%d%d%d", timepath, f, userId, r1, r2)
                     dst, err := os.Create(filename)
                     if err != nil {
                         success = false

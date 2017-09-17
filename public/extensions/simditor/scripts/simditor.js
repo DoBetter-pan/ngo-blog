@@ -4862,7 +4862,7 @@ AttachmentButton = (function(superClass) {
 
   AttachmentButton.prototype.name = 'attachment';
 
-  AttachmentButton.prototype.icon = 'picture-o';
+  AttachmentButton.prototype.icon = 'attachment';
 
   AttachmentButton.prototype.htmlTag = 'a';
 
